@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // NavController'ı bağla
-        navController = findNavController(R.id.nav_host_fragment)
+        navController = findNavController(com.ratmux.animeflix.MainFragment)
         setupActionBarWithNavController(navController, binding.drawerLayout)
 
         // NavigationView'ı bağla
