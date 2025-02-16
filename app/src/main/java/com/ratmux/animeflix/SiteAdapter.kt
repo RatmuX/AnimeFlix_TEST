@@ -3,7 +3,7 @@ package com.ratmux.animeflix
 class SiteAdapter(private val siteListesi: List<SiteLogosu>) :
     RecyclerView.Adapter<SiteAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) { // inner ekle
         val logo: ImageView = itemView.findViewById(R.id.site_logo)
         val isim: TextView = itemView.findViewById(R.id.site_ismi)
     }
@@ -20,5 +20,7 @@ class SiteAdapter(private val siteListesi: List<SiteLogosu>) :
         holder.isim.text = site.siteAdi
     }
 
-    override fun getItemCount(): Int = siteListesi.size
+    override fun getItemCount(): Int {
+        return siteListesi.size // return ekle
+    }
 }

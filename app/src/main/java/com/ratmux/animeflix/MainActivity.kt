@@ -15,18 +15,18 @@ import com.ratmux.animeflix.ui.theme.AnimeFlixTheme
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Toolbar'ı ayarla
-        setSupportActionBar(binding.toolbar)
-
-        // Navigation Drawer'ı başlat
-        val navController = findNavController(R.id.nav_host_fragment)
+        // NavController'ı bağla
+        navController = findNavController(R.id.nav_host_fragment)
         setupActionBarWithNavController(navController, binding.drawerLayout)
+
+        // NavigationView'ı bağla
         binding.navView.setupWithNavController(navController)
 
         // RecyclerView'ı başlat
@@ -42,9 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = SiteAdapter(siteListesi)
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = GridLayoutManager(this, 2) // Grid yapısı için
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.nav_host_fragment).navigateUp() || super.onSupportNavigateUp()
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
